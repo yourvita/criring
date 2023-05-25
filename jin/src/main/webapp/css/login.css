@@ -1,0 +1,48 @@
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+label,
+a {
+    color: #eee;
+}
+
+input[type="button"].btn.btn-primary.btn-lg.btn-block {
+    margin-top: 5px;
+}
+
+.modal-body.py-5 {
+    padding-top: 0 !important;
+}
+
+.modal-title-font {
+    margin-left: 10px;
+    color: #4f83d1;
+    font-size: 18px;
+}
+
+.row.d-flex.align-items-center.justify-content-center.h-100.modal-form {
+    height: 80%;
+}
+
+.login-background .container.py-5.h-100 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.modal-btn {
+    width: 100%;
+}
+
+.joinform-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.joinform-btn button {
+    width: 150px;
+}

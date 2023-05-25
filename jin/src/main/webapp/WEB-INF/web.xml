@@ -1,0 +1,27 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>joinMember</servlet-name>
+  	<display-name>joinMember</display-name>
+  	<description></description>
+  	<servlet-class>com.jin.controller.joinMember</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>loginChk</servlet-name>
+  	<display-name>loginChk</display-name>
+  	<description></description>
+  	<servlet-class>com.jin.controller.loginChk</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>joinMember</servlet-name>
+  	<url-pattern>/joinMember</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>loginChk</servlet-name>
+  	<url-pattern>/loginChk</url-pattern>
+  </servlet-mapping>
+</web-app>

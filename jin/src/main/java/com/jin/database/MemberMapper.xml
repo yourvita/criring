@@ -17,8 +17,8 @@
 	INSERT INTO TBL_STORE(STORE_EMAIL, STORE_PW, STORE_NAME, STORE_ADDR, STORE_TEL, laundry_cnt, dryer_cnt) VALUES(#{email}, #{pw}, #{name}, #{addr}, #{tel}, #{laundry_cnt}, #{dryer_cnt})
 	</insert>
 	
-	<insert id="registLaundry" parameterType="Store">
-		INSERT INTO TBL_LAUNDRY VALUES(tbl_laundry_SEQ.NEXTVAL, #{laundry_name}, #{store_email}, #{store_user})
+	<insert id="registLaundry" parameterType="Laundry">
+		INSERT INTO TBL_LAUNDRY VALUES(tbl_laundry_SEQ.NEXTVAL, #{laundry_name}, #{store_email}, #{store_user}, #{SERIAL_NO})
 	</insert>
 	
 	<select id="loginChk" parameterType="Member" resultMap="member">

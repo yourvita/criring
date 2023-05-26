@@ -52,7 +52,7 @@ public class joinMember extends HttpServlet {
 			if (result > 0) {
 				System.out.println("업체 등록 성공");
 				for (int i = 1; i <= joinLaundryCnt; i++) {
-					LaundryDTO ldto = new LaundryDTO(i, "laundry" + i, joinEmail, 'n');
+					LaundryDTO ldto = new LaundryDTO(i, "laundry" + i, joinEmail, 'n',100+i);
 					int insert = sdao.insertLaundry(ldto);
 					if (insert > 0) {
 						System.out.println("세탁기 등록 성공");
@@ -62,7 +62,7 @@ public class joinMember extends HttpServlet {
 				}
 
 				for (int i = 1; i <= joinDryerCnt; i++) {
-					LaundryDTO ddto = new LaundryDTO(i, "dryer" + i, joinEmail, 'n');
+					LaundryDTO ddto = new LaundryDTO(i, "dryer" + i, joinEmail, 'n',200+i);
 					int insert = sdao.insertLaundry(ddto);
 					if (insert > 0) {
 						System.out.println("건조기 등록 성공");

@@ -12,4 +12,5 @@ public class LaundryDTO {
 	private String laundry_name;
 	private String store_email;
 	private char store_user;
+	private int SERIAL_NO;
 }

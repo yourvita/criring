@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>com.jin.controller.loginChk</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>logOut</servlet-name>
+  	<display-name>logOut</display-name>
+  	<description></description>
+  	<servlet-class>com.jin.controller.logOut</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>joinMember</servlet-name>
   	<url-pattern>/joinMember</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>loginChk</servlet-name>
   	<url-pattern>/loginChk</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>logOut</servlet-name>
+  	<url-pattern>/logOut</url-pattern>
   </servlet-mapping>
 </web-app>

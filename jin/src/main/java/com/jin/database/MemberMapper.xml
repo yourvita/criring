@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jin.database.MemberMapper">
-	<insert id="joinMember" parameterType="com.jin.model.MemberDTO">
+
+	<resultMap type="Member" id="member">
+		 <result column="MB_EMAIL" property="email"/>
+		 <result column="MB_PW" property="Pw"/>
+	
+	</resultMap>
+
+
+	<insert id="joinMember" parameterType="Member">
 		INSERT INTO CLEARING(MB_EMAIL, MB_PW,MB_NAME,MB_ADDR) VALUES(#{email}, #{Pw}, #{name}, #{addr})
 	</insert>
-	<select id="loginChk" parameterType="com.jin.model.MemberDTO" resultType="com.jin.model.MemberDTO">
-		SELECT * FROM CLEARING WHERE mb_email=#{email} AND mb_pw=#{Pw}
+	
+	<insert id="joinStore" parameterType="Store">
+	INSERT INTO TBL_STORE(STORE_EMAIL, STORE_PW, STORE_NAME, STORE_ADDR, STORE_TEL, laundry_cnt, dryer_cnt) VALUES(#{email}, #{pw}, #{name}, #{addr}, #{tel}, #{laundry_cnt}, #{dryer_cnt})
+	</insert>
+	
+	<insert id="registLaundry" parameterType="Store">
+		INSERT INTO TBL_LAUNDRY VALUES(tbl_laundry_SEQ.NEXTVAL, #{laundry_name}, #{store_email}, #{store_user})
+	</insert>
+	
+	<select id="loginChk" parameterType="Member" resultMap="member">
+		SELECT * FROM CLEARING WHERE MB_EMAIL=#{email} AND MB_PW=#{Pw}
+	</select>
+	
+	<select id="loginCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) FROM CLEARING WHERE mb_email=#{email} AND mb_pw=#{Pw}
 	</select>
 </mapper>

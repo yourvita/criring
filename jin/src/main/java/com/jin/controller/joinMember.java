@@ -6,30 +6,75 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jin.model.LaundryDTO;
 import com.jin.model.MemberDAO;
 import com.jin.model.MemberDTO;
-
+import com.jin.model.StoreDAO;
+import com.jin.model.StoreDTO;
 
 public class joinMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+
+		String joinMember = request.getParameter("flexRadioDefault");
 		String joinEmail = request.getParameter("joinEmail");
 		String joinPw = request.getParameter("joinPw");
 		String joinName = request.getParameter("joinName");
 		String joinAddr = request.getParameter("joinAddr");
-		
-		MemberDTO dto = new MemberDTO(joinEmail, joinPw, joinName, joinAddr,null,null,null);
+		String joinLaundry = request.getParameter("laundryCnt");
+		String joinDryer = request.getParameter("dryerCnt");
+		int joinLaundryCnt = 0;
+		int joinDryerCnt = 0;
+		if (joinLaundry != null || joinDryer != null) {
+			joinLaundryCnt = Integer.parseInt(joinLaundry);
+			joinDryerCnt = Integer.parseInt(joinDryer);
+		}
+
+		MemberDTO dto = new MemberDTO(joinEmail, joinPw, joinName, joinAddr, null, null, null);
+		StoreDTO sdto = new StoreDTO(joinEmail, joinPw, joinName, joinAddr, joinDryer, joinLaundryCnt, joinDryerCnt);
 		MemberDAO dao = new MemberDAO();
-		int result = dao.joinMember(dto);
-		if(result >0 ) {
-			System.out.println("등록 성공");
-			response.sendRedirect("login1.jsp");
+		StoreDAO sdao = new StoreDAO();
+
+		if (joinMember.equals("member")) {
+			int result = dao.joinMember(dto);
+			if (result > 0) {
+				System.out.println("등록 성공");
+				response.sendRedirect("login1.jsp");
+			} else {
+				System.out.println("등록 실패");
+				response.sendRedirect("page-404.html");
+			}
 		} else {
-			System.out.println("등록 실패");
-			response.sendRedirect("page-404.html");
+			int result = dao.joinStore(sdto);
+			if (result > 0) {
+				System.out.println("업체 등록 성공");
+				for (int i = 1; i <= joinLaundryCnt; i++) {
+					LaundryDTO ldto = new LaundryDTO(i, "laundry" + i, joinEmail, 'n');
+					int insert = sdao.insertLaundry(ldto);
+					if (insert > 0) {
+						System.out.println("세탁기 등록 성공");
+					} else {
+						System.out.println("세탁기 등록 실패");
+					}
+				}
+
+				for (int i = 1; i <= joinDryerCnt; i++) {
+					LaundryDTO ddto = new LaundryDTO(i, "dryer" + i, joinEmail, 'n');
+					int insert = sdao.insertLaundry(ddto);
+					if (insert > 0) {
+						System.out.println("건조기 등록 성공");
+					} else {
+						System.out.println("건조기 등록 실패");
+					}
+				}
+				response.sendRedirect("login1.jsp");
+			} else {
+				System.out.println("업체 등록 실패");
+				response.sendRedirect("page-404.html");
+			}
 		}
 	}
 

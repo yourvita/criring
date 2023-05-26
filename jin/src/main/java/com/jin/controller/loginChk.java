@@ -19,14 +19,16 @@ public class loginChk extends HttpServlet {
 		String inputPw = request.getParameter("inputPw");
 
 		MemberDAO dao = new MemberDAO();
-		MemberDTO member2 = dao.loginChk(inputEmail, inputPw);
-		
-		if(member2 != null) {
+		MemberDTO dto = new MemberDTO(inputEmail, inputPw);
+		MemberDTO memberChk = dao.loginChk(dto);
+		if(memberChk !=null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", dto);
 			System.out.println("로그인 성공");
-			response.sendRedirect("index.html");
+			response.sendRedirect("index.jsp");
 		} else {
 			System.out.println("로그인 실패");
-			System.out.println(member2);
+			System.out.println(memberChk);
 			response.sendRedirect("login1.jsp");
 		}
 	}

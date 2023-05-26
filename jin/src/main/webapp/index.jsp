@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,7 +26,6 @@
 <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/login.css" />
 
 <!--
 
@@ -37,175 +36,13 @@ https://www.tooplate.com/view/2132-clean-work
 Free Bootstrap 5 HTML Template
 
 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-<script>
-	$(function() {
-		$("input[name='flexRadioDefault']").click(function(){
-			var test = $("input[name='flexRadioDefault']:checked").val();
-			if($("input[name='flexRadioDefault']:checked").val()=="member") {
-				$("#form1Example25").attr("disabled",true);			
-				$("#form1Example26").attr("disabled",true);
-			} else {
-				
-			$("#form1Example25").attr("disabled",false);			
-			$("#form1Example26").attr("disabled",false);			
-			}
-		});
-
-	})
-</script>
 </head>
 
 <body>
+
 	<%
-	MemberDTO member = (MemberDTO) session.getAttribute("userEmail");
-	String email = null;
-	String name = null;
-	String addr = null;
-	if (member != null) {
-		email = member.getEmail();
-		name = member.getName();
-		addr = member.getAddr();
-	} else {
+	MemberDTO member = (MemberDTO) session.getAttribute("member");
 	%>
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Join-in</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<span class="modal-title-font">크리링 계정 만들기</span>
-					<div class="login-background">
-						<section class="vh-100">
-							<div class="container py-5 h-100">
-								<div
-									class="row d-flex align-items-center justify-content-center h-100 modal-form">
-									<form action="joinMember" method="post">
-										<div class="memberStore"
-											style="display: flex; justify-content: space-around;">
-											<div class="form-check">
-												<input class="form-check-input" type="radio"
-													name="flexRadioDefault" id="flexRadioDefault1"
-													value="member" onclick="getMember(event)" checked />
-													<label
-													class="form-check-label" for="flexRadioDefault1">
-													일반회원 </label>
-											</div>
-
-											<div class="form-check">
-												<input class="form-check-input" type="radio"
-													name="flexRadioDefault" id="flexRadioDefault2"
-													value="store" onclick="getMember(event)" />
-													<label
-													class="form-check-label" for="flexRadioDefault2">
-													사업자 </label>
-											</div>
-										</div>
-										<!-- Email input -->
-										<div class="form-outline mb-4">
-											<label class="form-label" for="form1Example13">Email
-												address</label> <input type="email" id="form1Example13"
-												name="joinEmail" class="form-control form-control-lg" />
-										</div>
-
-										<!-- Password input -->
-										<div class="form-outline mb-4">
-											<label class="form-label" for="form1Example23">Password</label>
-											<input type="password" id="form1Example23" name="joinPw"
-												class="form-control form-control-lg" />
-										</div>
-
-										<div class="form-outline mb-4">
-											<label class="form-label" for="form1Example24">Name</label>
-											<input type="text" id="form1Example24" name="joinName"
-												class="form-control form-control-lg" />
-										</div>
-
-										<div class="form-outline mb-4">
-											<label class="form-label" for="sample4_roadAddress">Address</label>
-											<input type="text" id="sample4_roadAddress"
-												placeholder="도로명주소" name="joinAddr"
-												class="form-control form-control-lg" /> <input
-												type="button" onclick="sample4_execDaumPostcode()"
-												class="btn btn-primary btn-lg btn-block" value="주소 찾기" /><br />
-											<script
-												src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-											<script>
-												//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-												function sample4_execDaumPostcode() {
-													new daum.Postcode(
-															{
-																oncomplete : function(
-																		data) {
-																	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-																	// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-																	// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-																	var roadAddr = data.roadAddress; // 도로명 주소 변수
-																	var extraRoadAddr = ""; // 참고 항목 변수
-
-																	// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-																	// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-																	if (data.bname !== ""
-																			&& /[동|로|가]$/g
-																					.test(data.bname)) {
-																		extraRoadAddr += data.bname;
-																	}
-																	// 건물명이 있고, 공동주택일 경우 추가한다.
-																	if (data.buildingName !== ""
-																			&& data.apartment === "Y") {
-																		extraRoadAddr += extraRoadAddr !== "" ? ", "
-																				+ data.buildingName
-																				: data.buildingName;
-																	}
-																	// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-																	if (extraRoadAddr !== "") {
-																		extraRoadAddr = " ("
-																				+ extraRoadAddr
-																				+ ")";
-																	}
-
-																	// 우편번호와 주소 정보를 해당 필드에 넣는다.
-
-																	document
-																			.getElementById("sample4_roadAddress").value = roadAddr;
-
-																	// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-																},
-															}).open();
-												}
-											</script>
-										</div>
-										<div>
-											<input type="number" id="form1Example25" name="laundryCnt"
-												class="form-control form-control-lg laundryNum"
-												placeholder="세탁기 수" disabled="disabled" /> <input
-												type="number" id="form1Example26" name="dryerCnt"
-												class="form-control form-control-lg" placeholder="건조기 수"
-												disabled="disabled" />
-
-										</div>
-										<!-- Submit button -->
-										<button type="submit"
-											class="btn btn-primary btn-lg btn-block modal-btn">
-											Sign up</button>
-									</form>
-								</div>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<%
-	}
-	%>
-
 	<header class="site-header">
 		<div class="container">
 			<div class="row">
@@ -269,6 +106,24 @@ Free Bootstrap 5 HTML Template
 
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
+
+					<%
+					if (member != null) {
+					%>
+					<li class="nav-item ms-3"><a
+						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+						href="Mypage.jsp">My page</a></li>
+					<li class="nav-item ms-3"><a
+						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+						href="logOut">Log-Out</a></li>
+					<%
+					} else {%>
+						<li class="nav-item ms-3"><a
+						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+						href="login1.jsp">Get Start</a></li>
+					<% }%>
+					
+
 				</ul>
 			</div>
 		</div>
@@ -281,68 +136,26 @@ Free Bootstrap 5 HTML Template
 
 			<div class="container">
 				<div class="row">
-					<!-- GRID Place -->
-					<div class="login-background">
-						<section class="vh-100">
-							<div class="container py-5 h-100">
-								<div
-									class="row d-flex align-items-center justify-content-center h-100">
-									<div class="col-md-8 col-lg-7 col-xl-6">
-										<img
-											src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-											class="img-fluid" alt="Phone image" />
-									</div>
-									<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-										<%
-										if (member != null) {
-										} else {
-										%>
-										<form action="loginChk" method="post">
-											<!-- Email input -->
-											<div class="form-outline mb-4">
-												<input type="text" id="form1Example31" name="inputEmail"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="form1Example31">Email
-													address</label>
-											</div>
+					<div class="col-lg-7 col-12 text-center mx-auto">
+						<h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
+							<span>We clean your</span> <span class="cd-words-wrapper">
+								<b class="is-visible">House</b> <b>Office</b> <b>Kitchen</b>
+							</span>
+						</h1>
 
-											<!-- Password input -->
-											<div class="form-outline mb-4">
-												<input type="password" id="form1Example30" name="inputPw"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="form1Example30">Password</label>
-											</div>
+						<a class="custom-btn btn button button--atlas smoothscroll me-3"
+							href="#intro-section"> <span>Introduction</span>
 
-											<div
-												class="d-flex justify-content-around align-items-center mb-4">
-												<!-- Checkbox -->
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value=""
-														id="form1Example3" checked /> <label
-														class="form-check-label" for="form1Example3">
-														Remember me </label>
-												</div>
-												<a href="#!">Forgot
-													password?</a>
-											</div>
-
-											<!-- Submit button -->
-											<div class="joinform-btn">
-												<button type="submit"
-													class="btn btn-primary btn-lg btn-block">Sign in</button>
-												<button type="button"
-													class="btn btn-primary btn-lg btn-block"
-													data-bs-toggle="modal" data-bs-target="#exampleModal">
-													Join in</button>
-											</div>
-										</form>
-										<%
-										}
-										%>
-									</div>
+							<div class="marquee" aria-hidden="true">
+								<div class="marquee__inner">
+									<span>Introduction</span> <span>Introduction</span> <span>Introduction</span>
+									<span>Introduction</span>
 								</div>
 							</div>
-						</section>
+						</a> <a
+							class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
+							href="#services-section"> <span>Explore Services</span>
+						</a>
 					</div>
 				</div>
 			</div>

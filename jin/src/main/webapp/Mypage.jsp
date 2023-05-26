@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -67,7 +69,7 @@ Free Bootstrap 5 HTML Template
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.jsp">
                     <img
                         src="images/bubbles.png"
                         class="logo img-fluid"
@@ -90,7 +92,7 @@ Free Bootstrap 5 HTML Template
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html"
+                            <a class="nav-link active" href="index.jsp"
                                 >Home</a
                             >
                         </li>
@@ -142,14 +144,9 @@ Free Bootstrap 5 HTML Template
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-
-                        <li class="nav-item ms-3">
-                            <a
-                                class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-                                href="login.html"
-                                >Get started</a
-                            >
-                        </li>
+                        <li class="nav-item ms-3"><a
+						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+						href="logOut">Log-Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -162,38 +159,8 @@ Free Bootstrap 5 HTML Template
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-7 col-12 text-center mx-auto">
-                            <h1
-                                class="cd-headline rotate-1 text-white mb-4 pb-2">
-                                <span>We clean your</span>
-                                <span class="cd-words-wrapper">
-                                    <b class="is-visible">House</b>
-                                    <b>Office</b>
-                                    <b>Kitchen</b>
-                                </span>
-                            </h1>
-
-                            <a
-                                class="custom-btn btn button button--atlas smoothscroll me-3"
-                                href="#intro-section">
-                                <span>Introduction</span>
-
-                                <div class="marquee" aria-hidden="true">
-                                    <div class="marquee__inner">
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a
-                                class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-                                href="#services-section">
-                                <span>Explore Services</span>
-                            </a>
-                        </div>
+						<!-- 예약정보 OR 내정보수정 -->
+						
                     </div>
                 </div>
 
@@ -210,64 +177,14 @@ Free Bootstrap 5 HTML Template
                     <div
                         class="row justify-content-lg-center align-items-center">
                         <div class="col-lg-6 col-12">
-                            <h2 class="mb-4">
-                                Reliable &amp; Fast Cleaning <br />
-                                Service
-                            </h2>
-
-                            <p>
-                                <a href="#">Clean Work</a> is a Bootstrap
-                                v.5.1.3 HTML CSS template for free download
-                                provided by Tooplate. You can use this layout
-                                for any purpose. Images are taken from
-                                <a
-                                    rel="nofollow"
-                                    href="https://www.freepik.com/"
-                                    target="_blank"
-                                    >FreePik</a
-                                >
-                                and
-                                <a
-                                    rel="nofollow"
-                                    href="https://worldvectorlogo.com/"
-                                    target="_blank"
-                                    >WorldVectorLogo</a
-                                >
-                                websites.
-                            </p>
-                            <p>
-                                You <strong>may not</strong> redistribute this
-                                template ZIP file on any other template
-                                collection website. Please
-                                <a
-                                    href="https://www.tooplate.com/contact"
-                                    target="_blank"
-                                    >contact us</a
-                                >
-                                for more info. Thank you.
-                            </p>
+							<!-- 예약정보 OR 내정보수정 -->
                         </div>
 
                         <div class="col-lg-6 col-12 custom-block-wrap">
-                            <img
-                                src="images/male-wearing-apron-female-white-t-shirt-smiling-broadly-being-glad-clean.png"
-                                class="img-fluid" />
-
-                            <div class="custom-block d-flex flex-column">
-                                <h6 class="text-white mb-3">
-                                    Need Help? <br />
-                                    Please call us:
-                                </h6>
-
-                                <p class="d-flex mb-0">
-                                    <i
-                                        class="bi-telephone-fill custom-icon me-2"></i>
-
-                                    <a href="tel: 110-220-9800">
-                                        110-220-9800
-                                    </a>
-                                </p>
-                            </div>
+							<!-- 예약정보 OR 내정보수정 -->
+                            <!-- <div class="custom-block d-flex flex-column">
+                              예약정보 OR 내정보수정
+                            </div> -->
                         </div>
                     </div>
                 </div>

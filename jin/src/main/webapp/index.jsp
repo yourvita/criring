@@ -117,12 +117,15 @@ Free Bootstrap 5 HTML Template
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">Log-Out</a></li>
 					<%
-					} else {%>
-						<li class="nav-item ms-3"><a
+					} else {
+					%>
+					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="login1.jsp">Get Start</a></li>
-					<% }%>
-					
+					<%
+					}
+					%>
+
 
 				</ul>
 			</div>
@@ -137,24 +140,39 @@ Free Bootstrap 5 HTML Template
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7 col-12 text-center mx-auto">
+
 						<h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
 							<span>We clean your</span> <span class="cd-words-wrapper">
 								<b class="is-visible">House</b> <b>Office</b> <b>Kitchen</b>
 							</span>
 						</h1>
+						<!-- 사용자 주소 입력 및 검색 input -->
+						<div class="searchAddr">
+							<form action="searchAddress">
+								<div class="input-group mb-3">
+									<input type="text" class="form-control"
+										name = "addrSearch"
+										placeholder="검색할 주소를 입력하세요"
+										aria-label="Recipient's username"
+										aria-describedby="button-addon2">
+									<button class="btn btn-outline-secondary search-btn" type="submit"
+										id="button-addon2" style="background-color: #4f83d1;">Search</button>
+								</div>
+							</form>
+						</div>
 
 						<a class="custom-btn btn button button--atlas smoothscroll me-3"
-							href="#intro-section"> <span>Introduction</span>
+							href="#intro-section"> <span>Reservation</span>
 
 							<div class="marquee" aria-hidden="true">
 								<div class="marquee__inner">
-									<span>Introduction</span> <span>Introduction</span> <span>Introduction</span>
-									<span>Introduction</span>
+									<span>Reservation</span> <span>Reservation</span> <span>Reservation</span>
+									<span>Reservation</span>
 								</div>
 							</div>
 						</a> <a
 							class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-							href="#services-section"> <span>Explore Services</span>
+							href="#services-section"> <span style="">Detail Info</span>
 						</a>
 					</div>
 				</div>
@@ -178,10 +196,9 @@ Free Bootstrap 5 HTML Template
 							<a href="#">Clean Work</a> is a Bootstrap v.5.1.3 HTML CSS
 							template for free download provided by Tooplate. You can use this
 							layout for any purpose. Images are taken from <a rel="nofollow"
-								href="https://www.freepik.com/" target="_blank">FreePik</a>
-							and <a rel="nofollow" href="https://worldvectorlogo.com/"
-								target="_blank">WorldVectorLogo</a>
-							websites.
+								href="https://www.freepik.com/" target="_blank">FreePik</a> and
+							<a rel="nofollow" href="https://worldvectorlogo.com/"
+								target="_blank">WorldVectorLogo</a> websites.
 						</p>
 						<p>
 							You <strong>may not</strong> redistribute this template ZIP file
@@ -269,11 +286,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -334,11 +348,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -399,11 +410,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -464,11 +472,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -670,8 +675,7 @@ Free Bootstrap 5 HTML Template
 
 					<ul class="footer-menu d-flex flex-wrap ms-5">
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">About
-								Us</a></li>
+							class="footer-menu-link">About Us</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link">Blog</a></li>
@@ -761,8 +765,7 @@ Free Bootstrap 5 HTML Template
 					<div class="featured-block">
 						<h5 class="text-white mb-3">Service Hours</h5>
 
-						<strong class="d-block text-white mb-1">Mon
-							- Fri</strong>
+						<strong class="d-block text-white mb-1">Mon - Fri</strong>
 
 						<p class="text-white mb-3">8:00 AM - 5:30 PM</p>
 
@@ -785,8 +788,7 @@ Free Bootstrap 5 HTML Template
 					<div class="col-lg-6 col-12 text-end">
 						<p class="copyright-text mb-0">
 							// Designed by <a href="https://www.tooplate.com"
-								target="_parent">Tooplate</a>
-							//
+								target="_parent">Tooplate</a> //
 						</p>
 					</div>
 				</div>

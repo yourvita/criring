@@ -65,6 +65,8 @@ input[type="button"].btn.btn-primary.btn-lg.btn-block {
 }
 
 .form-control {
+	    display: inline-block;
+	    width:100%;
 	margin-bottom: 10px;
 }
 
@@ -80,4 +82,17 @@ input[type="button"].btn.btn-primary.btn-lg.btn-block {
 .row.mainForm {
 	margin-top: 25%;
 	z-index: 99999999999999;
+}
+
+.input-group-jin {
+	margin-top : 15px;
+}
+
+.kakao-search {
+	display:flex;
+    flex-direction: column;
+}
+
+.search_reservation {
+	margin-top:5%;
 }

@@ -25,9 +25,9 @@
 
 <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
-<link href="css/login.css" rel="stylesheet">
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
-
+<link href="css/login.css" rel="stylesheet">
+<link href="css/kakaoMap.css" rel="stylesheet">
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
 
@@ -153,23 +153,23 @@ Free Bootstrap 5 HTML Template
 							</span>
 						</h1>
 
-						<a class="custom-btn btn button button--atlas smoothscroll me-3" href="#intro-section">
-                                <span>Introduction</span>
+						<button
+							class="custom-btn btn button button--atlas smoothscroll me-3"
+							onclick="goToScroll('search_reservation');return false;">
+							<span>Start Search !</span>
 
-                                <div class="marquee" aria-hidden="true">
-                                    <div class="marquee__inner">
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll" href="#services-section">
-                                <span>Explore Services</span>
-                            </a>
-						
+							<div class="marquee" aria-hidden="true">
+								<div class="marquee__inner">
+									<span>Start Search !</span> <span>Start Search !</span> <span>Start
+										Search !</span> <span>Start Search !</span>
+								</div>
+							</div>
+						</button>
+						<a
+							class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
+							href="#services-section"> <span>Explore Services</span>
+						</a>
+
 						<!-- 사용자 주소 입력 및 검색 input -->
 					</div>
 				</div>
@@ -177,9 +177,10 @@ Free Bootstrap 5 HTML Template
 
 		</section>
 	</main>
-	<div style="height: 1000px;">
-		<div class="searchAddr">
-			<div class="input-group mb-3">
+	<section class="search_reservation"
+		style="height: 1000px; position: relative; margin-top:5%;">
+		<%-- <div class="searchAddr">
+			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
 					id="keyword" placeholder="검색할 주소를 입력하세요"
 					aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -187,27 +188,74 @@ Free Bootstrap 5 HTML Template
 				String searchAddr = request.getParameter("addrSearch");
 				%>
 				<button class="btn btn-outline-secondary search-btn"
-					id="button-addon2" style="background-color: #4f83d1;">Search</button>
+					id="button-addon2" style="height: 100%; background-color: #4f83d1;">Search</button>
 
 			</div>
 
 
+		</div> --%>
+		<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
+		<%
+		String searchAddr = request.getParameter("addrSearch");
+		if (searchAddr == null) {
+			searchAddr = "농성동";
+		}
+		%>
+		<div class="option">
+			<div class="kakao-search">
+				<form id="searchAddrReservation"
+					onsubmit="searchPlaces(); return false;">
+					<input type="text" class="form-control" name="addrSearch"
+						value="<%=searchAddr%> 코인세탁방" id="keyword"
+						placeholder="검색할 주소를 입력하세요" aria-label="Recipient's username"
+						aria-describedby="button-addon2" size="15">
+					<button type="button" class="btn search-btn" id="button-addon2">Search
+						!</button>
+				</form>
+			</div>
 		</div>
-		<div id="map" style="width: 600px; height: 400px;"></div>
-		<a class="custom-btn btn button button--atlas smoothscroll me-3"
-			href="#intro-section"> <span>Reservation</span>
-
-			<div class="marquee" aria-hidden="true">
-				<div class="marquee__inner">
-					<span>Reservation</span> <span>Reservation</span> <span>Reservation</span>
-					<span>Reservation</span>
-				</div>
+		<div class="map_wrap">
+			<div id="menu_wrap" class="bg_white">
+				<hr>
+				<ul id="placesList"></ul>
+				<div id="pagination"></div>
 			</div>
-		</a> <a
-			class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-			href="#services-section"> <span style="">Detail Info</span>
-		</a>
-	</div>
+			<div id="map"
+				style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
+		</div>
+		<form action="searchAddress" id="selectStore_form">
+
+			<div class="selectReservation">
+				<div class="reservation-info dp-none">
+					<div id="selectStore" class="selectStore_pos"></div>
+					<div style="margin-left: 15px;">예약하시겠습니까?</div>
+				</div>
+				<div class="map-searchbtn-group">
+				<button type="submit"
+						class="custom-btn btn button button--atlas smoothscroll me-3">
+						<span>Reservation</span>
+
+						<div class="marquee" aria-hidden="true">
+							<div class="marquee__inner">
+								<span>Reservation</span> <span>Reservation</span> <span>Reservation</span>
+								<span>Reservation</span>
+							</div>
+						</div>
+					</button>
+					<a
+						class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
+						href="#services-section"> <span style="">Detail Info</span>
+					</a>
+				</div>
+				<div class="reservation-LatLng">
+					<div id="reservation-Lat"></div>
+					<div id="reservation-Lng"></div>
+				</div>
+				
+			</div>
+		</form>
+
+	</section>
 
 	<footer class="site-footer">
 		<div class="container">
@@ -351,5 +399,6 @@ Free Bootstrap 5 HTML Template
 	<script src="js/animated-headline.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/kakaoMap.js"></script>
+	<script src="js/btnScroll.js"></script>
 </body>
 </html>

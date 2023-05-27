@@ -37,23 +37,27 @@ https://www.tooplate.com/view/2132-clean-work
 Free Bootstrap 5 HTML Template
 
 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 	$(function() {
-		$("input[name='flexRadioDefault']").click(function(){
+		$("input[name='flexRadioDefault']").click(function() {
 			var test = $("input[name='flexRadioDefault']:checked").val();
-			if($("input[name='flexRadioDefault']:checked").val()=="member") {
-				$("#form1Example25").attr("disabled",true);			
-				$("#form1Example26").attr("disabled",true);
+			if ($("input[name='flexRadioDefault']:checked").val() == "member") {
+				$("#form1Example25").attr("disabled", true);
+				$("#form1Example26").attr("disabled", true);
 			} else {
-				
-			$("#form1Example25").attr("disabled",false);			
-			$("#form1Example26").attr("disabled",false);			
+
+				$("#form1Example25").attr("disabled", false);
+				$("#form1Example26").attr("disabled", false);
 			}
 		});
 
 	})
 </script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body>
@@ -90,8 +94,7 @@ Free Bootstrap 5 HTML Template
 											<div class="form-check">
 												<input class="form-check-input" type="radio"
 													name="flexRadioDefault" id="flexRadioDefault1"
-													value="member" onclick="getMember(event)" checked />
-													<label
+													value="member" onclick="getMember(event)" checked /> <label
 													class="form-check-label" for="flexRadioDefault1">
 													일반회원 </label>
 											</div>
@@ -99,8 +102,7 @@ Free Bootstrap 5 HTML Template
 											<div class="form-check">
 												<input class="form-check-input" type="radio"
 													name="flexRadioDefault" id="flexRadioDefault2"
-													value="store" onclick="getMember(event)" />
-													<label
+													value="store" onclick="getMember(event)" /> <label
 													class="form-check-label" for="flexRadioDefault2">
 													사업자 </label>
 											</div>
@@ -120,8 +122,8 @@ Free Bootstrap 5 HTML Template
 										</div>
 
 										<div class="form-outline mb-4">
-											<label class="form-label" for="form1Example24">Name</label>
-											<input type="text" id="form1Example24" name="joinName"
+											<label class="form-label" for="form1Example24">Name</label> <input
+												type="text" id="form1Example24" name="joinName"
 												class="form-control form-control-lg" />
 										</div>
 
@@ -132,53 +134,7 @@ Free Bootstrap 5 HTML Template
 												class="form-control form-control-lg" /> <input
 												type="button" onclick="sample4_execDaumPostcode()"
 												class="btn btn-primary btn-lg btn-block" value="주소 찾기" /><br />
-											<script
-												src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-											<script>
-												//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-												function sample4_execDaumPostcode() {
-													new daum.Postcode(
-															{
-																oncomplete : function(
-																		data) {
-																	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-																	// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-																	// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-																	var roadAddr = data.roadAddress; // 도로명 주소 변수
-																	var extraRoadAddr = ""; // 참고 항목 변수
-
-																	// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-																	// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-																	if (data.bname !== ""
-																			&& /[동|로|가]$/g
-																					.test(data.bname)) {
-																		extraRoadAddr += data.bname;
-																	}
-																	// 건물명이 있고, 공동주택일 경우 추가한다.
-																	if (data.buildingName !== ""
-																			&& data.apartment === "Y") {
-																		extraRoadAddr += extraRoadAddr !== "" ? ", "
-																				+ data.buildingName
-																				: data.buildingName;
-																	}
-																	// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-																	if (extraRoadAddr !== "") {
-																		extraRoadAddr = " ("
-																				+ extraRoadAddr
-																				+ ")";
-																	}
-
-																	// 우편번호와 주소 정보를 해당 필드에 넣는다.
-
-																	document
-																			.getElementById("sample4_roadAddress").value = roadAddr;
-
-																	// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-																},
-															}).open();
-												}
-											</script>
 										</div>
 										<div>
 											<input type="number" id="form1Example25" name="laundryCnt"
@@ -322,8 +278,7 @@ Free Bootstrap 5 HTML Template
 														class="form-check-label" for="form1Example3">
 														Remember me </label>
 												</div>
-												<a href="#!">Forgot
-													password?</a>
+												<a href="#!">Forgot password?</a>
 											</div>
 
 											<!-- Submit button -->
@@ -365,10 +320,9 @@ Free Bootstrap 5 HTML Template
 							<a href="#">Clean Work</a> is a Bootstrap v.5.1.3 HTML CSS
 							template for free download provided by Tooplate. You can use this
 							layout for any purpose. Images are taken from <a rel="nofollow"
-								href="https://www.freepik.com/" target="_blank">FreePik</a>
-							and <a rel="nofollow" href="https://worldvectorlogo.com/"
-								target="_blank">WorldVectorLogo</a>
-							websites.
+								href="https://www.freepik.com/" target="_blank">FreePik</a> and
+							<a rel="nofollow" href="https://worldvectorlogo.com/"
+								target="_blank">WorldVectorLogo</a> websites.
 						</p>
 						<p>
 							You <strong>may not</strong> redistribute this template ZIP file
@@ -456,11 +410,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -521,11 +472,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -586,11 +534,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -651,11 +596,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -857,8 +799,7 @@ Free Bootstrap 5 HTML Template
 
 					<ul class="footer-menu d-flex flex-wrap ms-5">
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">About
-								Us</a></li>
+							class="footer-menu-link">About Us</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link">Blog</a></li>
@@ -948,8 +889,7 @@ Free Bootstrap 5 HTML Template
 					<div class="featured-block">
 						<h5 class="text-white mb-3">Service Hours</h5>
 
-						<strong class="d-block text-white mb-1">Mon
-							- Fri</strong>
+						<strong class="d-block text-white mb-1">Mon - Fri</strong>
 
 						<p class="text-white mb-3">8:00 AM - 5:30 PM</p>
 
@@ -972,8 +912,7 @@ Free Bootstrap 5 HTML Template
 					<div class="col-lg-6 col-12 text-end">
 						<p class="copyright-text mb-0">
 							// Designed by <a href="https://www.tooplate.com"
-								target="_parent">Tooplate</a>
-							//
+								target="_parent">Tooplate</a> //
 						</p>
 					</div>
 				</div>
@@ -991,5 +930,7 @@ Free Bootstrap 5 HTML Template
 	<script src="js/modernizr.js"></script>
 	<script src="js/animated-headline.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="js/daumPostcode.js"></script>
+
 </body>
 </html>

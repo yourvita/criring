@@ -11,7 +11,11 @@ public class searchAddress extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchAddr = request.getParameter("addrSearch");
+		String searchAddr = request.getParameter("selectStoreOne");
+		String searchLat = request.getParameter("selectStoreLat");
+		String searchLng = request.getParameter("selectStoreLng");
+		System.out.println(searchAddr);
+		System.out.println(searchLat);
+		System.out.println(searchLng);
 	}
-
 }

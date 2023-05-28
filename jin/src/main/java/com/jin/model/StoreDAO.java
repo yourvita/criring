@@ -12,8 +12,15 @@ public class StoreDAO {
 	public int insertLaundry(LaundryDTO ldto) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int result = 0;
-		result = sqlSession.insert("com.jin.database.MemberMapper.registLaundry",ldto);
+		result = sqlSession.insert("registLaundry",ldto);
 		sqlSession.close();
 		return result;
+	}
+	public StoreDTO loginChk(StoreDTO sdto) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		StoreDTO storeMember = null;
+		storeMember = sqlSession.selectOne("storeLoginChk", sdto);
+		
+		return storeMember;
 	}
 }

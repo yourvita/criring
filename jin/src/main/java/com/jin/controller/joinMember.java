@@ -26,6 +26,9 @@ public class joinMember extends HttpServlet {
 		String joinAddr = request.getParameter("joinAddr");
 		String joinLaundry = request.getParameter("laundryCnt");
 		String joinDryer = request.getParameter("dryerCnt");
+		double joinLat = Double.parseDouble(request.getParameter("userLatInput"));
+		double joinLng = Double.parseDouble(request.getParameter("userLngInput"));
+
 		int joinLaundryCnt = 0;
 		int joinDryerCnt = 0;
 		if (joinLaundry != null || joinDryer != null) {
@@ -33,8 +36,8 @@ public class joinMember extends HttpServlet {
 			joinDryerCnt = Integer.parseInt(joinDryer);
 		}
 
-		MemberDTO dto = new MemberDTO(joinEmail, joinPw, joinName, joinAddr, null, null, null);
-		StoreDTO sdto = new StoreDTO(joinEmail, joinPw, joinName, joinAddr, joinDryer, joinLaundryCnt, joinDryerCnt);
+		MemberDTO dto = new MemberDTO(joinEmail, joinPw, joinName, joinAddr, null, null, null, joinLat, joinLng);
+		StoreDTO sdto = new StoreDTO(joinEmail, joinPw, joinName, joinAddr, joinDryer, joinLaundryCnt, joinDryerCnt, joinLat, joinLng);
 		MemberDAO dao = new MemberDAO();
 		StoreDAO sdao = new StoreDAO();
 

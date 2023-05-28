@@ -11,14 +11,14 @@ public class MemberDAO {
 	
 	public int joinMember(MemberDTO dto) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int result = sqlSession.insert("com.jin.database.MemberMapper.joinMember", dto);
+		int result = sqlSession.insert("joinMember", dto);
 		sqlSession.close();
 		return result;
 	}
 	
 	public int joinStore(StoreDTO dto) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int result = sqlSession.insert("com.jin.database.MemberMapper.joinStore", dto);
+		int result = sqlSession.insert("joinStore", dto);
 		sqlSession.close();
 		return result;
 	}
@@ -33,7 +33,7 @@ public class MemberDAO {
 	
 	public int loginCount(MemberDTO dto) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int result = sqlSession.selectOne("com.jin.database.MemberMapper.loginCount", dto);
+		int result = sqlSession.selectOne("loginCount", dto);
 		
 		sqlSession.close();
 		return result;

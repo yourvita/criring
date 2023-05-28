@@ -1,3 +1,6 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="java.lang.reflect.Member"%>
+<%@page import="com.jin.model.StoreDTO"%>
 <%@page import="com.jin.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -47,7 +50,27 @@ Free Bootstrap 5 HTML Template
 <body>
 
 	<%
-	MemberDTO member = (MemberDTO) session.getAttribute("member");
+	String email = null;
+	String name = null;
+	String addr = null;
+	Double lat = 0.0;
+	Double lng = 0.0;
+		session.getAttribute("");
+		MemberDTO member =(MemberDTO)session.getAttribute("member");
+		StoreDTO storeMember = (StoreDTO)session.getAttribute("storemember");
+	if(member.getMB_EMAIL() != null) {
+		email = member.getMB_EMAIL();
+		name = member.getMB_NAME();
+		addr = member.getMB_ADDR();
+		lat = member.getLAT();
+		lng = member.getLNG();
+	} else if(storeMember.getSTORE_EMAIL() != null) {		
+		email = storeMember.getSTORE_EMAIL();
+		name = storeMember.getSTORE_NAME();
+		addr = storeMember.getSTORE_ADDR();
+		lat = storeMember.getLAT();
+		lng = storeMember.getLNG();
+	}
 	%>
 	<header class="site-header">
 		<div class="container">
@@ -75,7 +98,7 @@ Free Bootstrap 5 HTML Template
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
 				src="images/bubbles.png" class="logo img-fluid" alt="" /> <span
-				class="ms-2">Clean Work</span>
+				class="ms-2"><%= session.getAttribute("member") %></span>
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -114,11 +137,11 @@ Free Bootstrap 5 HTML Template
 					</li>
 
 					<%
-					if (member != null) {
+					if (session.getAttribute("member") != null) {
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="Mypage.jsp">My page</a></li>
+						href="Mypage1.jsp">My page</a></li>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">Log-Out</a></li>
@@ -196,7 +219,10 @@ Free Bootstrap 5 HTML Template
 		</div> --%>
 		<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
 		<%
-		String searchAddr = request.getParameter("addrSearch");
+		
+		/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
+		String searchAddr = addr;
+		searchAddr = searchAddr.substring(0, 5);
 		if (searchAddr == null) {
 			searchAddr = "농성동";
 		}
@@ -247,7 +273,7 @@ Free Bootstrap 5 HTML Template
 						href="#services-section"> <span style="">Detail Info</span>
 					</a>
 				</div>
-				<div class="reservation-LatLng">
+				<div class="reservation-LatLng" style="display: none;">
 					<div id="reservation-Lat"></div>
 					<div id="reservation-Lng"></div>
 				</div>

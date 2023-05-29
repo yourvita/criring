@@ -15,10 +15,9 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public MemberDTO loginChk(String email, String Pw) {
+	public MemberDTO loginCheck(MemberDTO dto) {
 		
-		MemberDTO member = sqlSession.selectOne("com.jin.database.userMapper.loginCheck", new MemberDTO(email, Pw));
-		sqlSession.close();
+		MemberDTO member = sqlSession.selectOne("com.jin.database.MemberMapper.logincheck1", dto);
 		return member;
 	}
 }

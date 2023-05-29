@@ -13,11 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class MemberDTO {
-	@NonNull private String email;
-	@NonNull private String Pw;
-	private String name;
-	private String addr;
-	private String joinDate;
-	private String adminYN;
-	private String penalty;
+	@NonNull private String memberemail;
+	@NonNull private String memberpw;
+	private String membername;
+	private String memberaddr;
 }

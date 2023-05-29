@@ -21,7 +21,7 @@ public class joinMember extends HttpServlet {
 		String joinName = request.getParameter("joinName");
 		String joinAddr = request.getParameter("joinAddr");
 		
-		MemberDTO dto = new MemberDTO(joinEmail, joinPw, joinName, joinAddr,null,null,null);
+		MemberDTO dto = new MemberDTO(joinEmail, joinPw, joinName, joinAddr);
 		MemberDAO dao = new MemberDAO();
 		int result = dao.joinMember(dto);
 		if(result >0 ) {

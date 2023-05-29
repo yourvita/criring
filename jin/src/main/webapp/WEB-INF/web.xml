@@ -16,6 +16,24 @@
   	<description></description>
   	<servlet-class>com.jin.controller.loginChk</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>logOut</servlet-name>
+  	<display-name>logOut</display-name>
+  	<description></description>
+  	<servlet-class>com.jin.controller.logOut</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>searchAddress</servlet-name>
+  	<display-name>searchAddress</display-name>
+  	<description></description>
+  	<servlet-class>com.jin.controller.searchAddress</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>myPageUpdate</servlet-name>
+  	<display-name>myPageUpdate</display-name>
+  	<description></description>
+  	<servlet-class>com.jin.controller.myPageUpdate</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>joinMember</servlet-name>
   	<url-pattern>/joinMember</url-pattern>
@@ -23,5 +41,17 @@
   <servlet-mapping>
   	<servlet-name>loginChk</servlet-name>
   	<url-pattern>/loginChk</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>logOut</servlet-name>
+  	<url-pattern>/logOut</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>searchAddress</servlet-name>
+  	<url-pattern>/searchAddress</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>myPageUpdate</servlet-name>
+  	<url-pattern>/myPageUpdate</url-pattern>
   </servlet-mapping>
 </web-app>

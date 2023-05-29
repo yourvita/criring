@@ -10,6 +10,18 @@ label,
 a {
     color: #eee;
 }
+main {
+	height: 100%;
+}
+section {
+	height: auto;
+}
+
+slide>img {
+		width:200px;
+		height: 200px;
+		background-size: cover !important;
+}
 
 input[type="button"].btn.btn-primary.btn-lg.btn-block {
     margin-top: 5px;
@@ -45,4 +57,42 @@ input[type="button"].btn.btn-primary.btn-lg.btn-block {
 
 .joinform-btn button {
     width: 150px;
+}
+
+.memberStore {
+	display: flex !important;
+	justify-content: space-around !important;
+}
+
+.form-control {
+	    display: inline-block;
+	    width:100%;
+	margin-bottom: 10px;
+}
+
+.laundryNum {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.search-btn {
+	color: #ffffff;
+}
+
+.row.mainForm {
+	margin-top: 25%;
+	z-index: 99999999999999;
+}
+
+.input-group-jin {
+	margin-top : 15px;
+}
+
+.kakao-search {
+	display:flex;
+    flex-direction: column;
+}
+
+.search_reservation {
+	margin-top:5%;
 }

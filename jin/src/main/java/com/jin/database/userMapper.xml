@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jin.database.userMapper">
+<<<<<<< HEAD
 	<select id="loginCheck" parameterType="com.jin.model.MemberDTO" resultType="com.jin.model.MemberDTO">
 		SELECT * FROM CLEARING WHERE mbemail=#{memberemail} AND mbpw=#{memberpw}
+=======
+	<select id="loginCheck" parameterType="Member" resultType="Member">
+		SELECT * FROM CLEARING WHERE mb_email=#{email} AND mb_pw=#{Pw}
+>>>>>>> branch 'master' of https://github.com/yourvita/criring.git
 	</select>
 </mapper>
